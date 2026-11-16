@@ -67,7 +67,7 @@ export default function GenerationTimeline({ steps }: { steps: TimelineStep[] })
               <span
                 aria-hidden
                 className={cn(
-                  "absolute left-3.5 top-7 -bottom-0 w-px -translate-x-1/2 transition-colors duration-500",
+                  "absolute left-3.5 top-7 bottom-0 w-px -translate-x-1/2 transition-colors duration-500",
                   step.state === "complete" ? "bg-accent/60" : "bg-border",
                 )}
               />

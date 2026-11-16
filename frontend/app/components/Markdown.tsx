@@ -72,7 +72,7 @@ function FailedImageCallout({ node }: { node: HastNode }) {
                 {details.map(([label, value]) => (
                   <div key={label}>
                     <dt className="font-medium text-foreground">{label}</dt>
-                    <dd className="mt-0.5 break-words font-mono leading-relaxed text-muted-foreground">
+                    <dd className="mt-0.5 wrap-break-word font-mono leading-relaxed text-muted-foreground">
                       {value}
                     </dd>
                   </div>

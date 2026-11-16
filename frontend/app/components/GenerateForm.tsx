@@ -375,7 +375,7 @@ export default function GenerateForm() {
           <CircleAlert aria-hidden className="size-5 shrink-0 text-danger" />
           <div className="min-w-0 flex-1">
             <p className="font-medium text-danger">Generation failed</p>
-            <p className="mt-1 break-words text-sm">{error}</p>
+            <p className="mt-1 wrap-break-word text-sm">{error}</p>
           </div>
           <Button
             variant="secondary"
@@ -481,7 +481,7 @@ export default function GenerateForm() {
                 className="mt-3 max-h-48 space-y-1 overflow-y-auto rounded-lg bg-muted/60 p-3 font-mono text-xs text-muted-foreground"
               >
                 {log.map((m, i) => (
-                  <li key={i} className="break-words">
+                  <li key={i} className="wrap-break-word">
                     <span className="opacity-60">›</span> {m}
                   </li>
                 ))}
