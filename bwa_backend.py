@@ -162,10 +162,24 @@ def route_next(state: State) -> str:
 def _tavily_search(query: str, max_results: int = 5) -> List[dict]:
     
     tool = TavilySearch(max_results=max_results)
-    results = tool.invoke({"query": query})
+    try:
+        response = tool.invoke({"query": query})
+    except Exception as e:
+        # langchain_tavily raises ToolException when a query has no results —
+        # skip that query instead of failing the whole blog
+        print(f"[tavily] query failed: {query!r}: {e}")
+        return []
+
+    # langchain_tavily returns {"query": ..., "results": [...], ...}, not a list
+    if isinstance(response, dict):
+        results = response.get("results", [])
+    else:
+        results = response or []
 
     normalized: List[dict] = []
-    for r in results or []:
+    for r in results:
+        if not isinstance(r, dict):
+            continue
         normalized.append(
             {
                 "title": r.get("title") or "",
